@@ -1,0 +1,19 @@
+# IDE / Editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+tmp/
+log/
+
+# Ruby / Node / Python
+vendor/
+node_modules/
+__pycache__/
+
+
