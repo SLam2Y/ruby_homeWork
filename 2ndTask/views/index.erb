@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css">
+  <title>Калькулятор API</title>
+</head>
+<body>
+
+<h1>Калькулятор через API</h1>
+
+<input type="number" id="a" placeholder="Первое число">
+<select id="op">
+  <option value="+">+</option>
+  <option value="-">-</option>
+  <option value="*">*</option>
+  <option value="/">/</option>
+</select>
+<input type="number" id="b" placeholder="Второе число">
+
+<button onclick="calc()">Посчитать</button>
+
+<h2 id="result"></h2>
+
+<script>
+function calc() {
+  const a = document.getElementById("a").value;
+  const b = document.getElementById("b").value;
+  const op = document.getElementById("op").value;
+
+  fetch("/api/calc", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({a, b, op})
+  })
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById("result").textContent =
+      "Результат: " + data.result;
+  });
+}
+</script>
+
+</body>
+</html>
